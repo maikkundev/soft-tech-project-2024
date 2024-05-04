@@ -19,11 +19,5 @@ def read_file(file, file_extension):
 uploaded_file = sl.file_uploader("Import a csv or an excel file:", type=["csv", "xlsx"])
 
 if uploaded_file is not None:
-    file_details = {
-        "FileName": uploaded_file.name,
-        "FileType": uploaded_file.type,
-        "FileSize": uploaded_file.size,
-    }
-    sl.write(file_details)
     data = read_file(uploaded_file, uploaded_file.type.split("/")[-1])
     sl.dataframe(data)
