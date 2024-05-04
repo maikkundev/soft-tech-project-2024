@@ -3,6 +3,7 @@ import pandas as pd
 import io
 
 
+@sl.cache(allow_output_mutation=True)
 def read_file(file, file_extension):
     if file_extension == "csv":
         delim = sl.selectbox(
