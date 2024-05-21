@@ -4,6 +4,8 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import LabelEncoder
 from matplotlib import pyplot as plt
+from read_csv import upload_and_read_file
+
 
 import io
 
@@ -27,16 +29,6 @@ def perform_tSNE(df, n_components=2):
     tsne = TSNE(n_components=n_components)
     new_features = tsne.fit_transform(features)
     return pd.DataFrame(new_features)
-
-
-@sl.cache_data()
-def read_file(file, file_extension, delim):
-    if file_extension == "csv":
-        return pd.read_csv(
-            io.StringIO(file.getvalue().decode("utf-8")), delimiter=delim
-        )
-    else:
-        return pd.read_excel(io.BytesIO(file))
 
 
 def visualize_pca_scree(pca, num_components):
@@ -64,26 +56,10 @@ if "data" not in sl.session_state:
     sl.session_state.data = None
 
 if selected == "Data upload":
-    sl.session_state.uploaded_file = sl.file_uploader(
-        "Import a csv or an excel file:", type=["csv", "xlsx"]
-    )
-
-    if sl.session_state.uploaded_file is not None:
-        delim = sl.selectbox(
-            'Please enter the delimiter of the csv file. It must be either ";" or ",": ',
-            [",", ";"],
-        )
-        sl.session_state.data = read_file(
-            sl.session_state.uploaded_file,
-            sl.session_state.uploaded_file.type.split("/")[-1],
-            delim,
-        )
-        le = LabelEncoder()
-        sl.session_state.data["Target"] = le.fit_transform(
-            sl.session_state.data["Target"]
-        )
-
-        sl.dataframe(sl.session_state.data)
+    if selected == "Data upload":
+        sl.session_state.data = upload_and_read_file()
+        if sl.session_state.data is not None:
+            sl.dataframe(sl.session_state.data)
 
 
 elif selected == "PCA Analysis":
