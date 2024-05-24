@@ -21,7 +21,7 @@ def main():
     data_frame, class_names = upload_and_read_file()
 
     if data_frame.empty:
-        sl.error(
+        sl.warning(
             "Either the uploaded file is empty or could not be read, or Target is Empty. Please upload a valid file or input a Target."
         )
     else:
