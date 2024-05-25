@@ -34,7 +34,8 @@ def upload_and_read_file():
             uploaded_file.type.split("/")[-1],
         )
 
-        target = sl.text_input("Please specify your Target")
+        columns = data.columns
+        target = sl.selectbox("Please specify your Target", columns)
 
         if target is not None and target != "":
 
