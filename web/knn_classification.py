@@ -105,6 +105,7 @@ class KNNClassification:
         # Separate the features from the target variable in the training data
         X_train = training_data.iloc[:, :-1]
         y_train = training_data.iloc[:, -1]
+        unique_classes = y_train.unique()
 
         # Separate the features from the target variable in the testing data
         X_test = testing_data.iloc[:, :-1]
@@ -119,14 +120,32 @@ class KNNClassification:
         # Make predictions on the testing data
         y_pred = classifier.predict(X_test)
 
-        # Calculate and display the accuracy, precision, recall, and F1 score
-        accuracy = accuracy_score(y_test, y_pred)
-        precision = precision_score(y_test, y_pred, average="micro")
-        recall = recall_score(y_test, y_pred, average="micro")
-        f1 = f1_score(y_test, y_pred, average="micro")
+        # # Calculate and display the accuracy, precision, recall, and F1 score
+        # accuracy = accuracy_score(y_test, y_pred)
+        # precision = precision_score(y_test, y_pred, average="micro")
+        # recall = recall_score(y_test, y_pred, average="micro")
+        # f1 = f1_score(y_test, y_pred, average="micro")
 
         # Calculate the confusion matrix
-        cm = confusion_matrix(y_test, y_pred)
+        # cm = confusion_matrix(y_test, y_pred)
+
+        accuracy = round((accuracy_score(y_test, y_pred) * 100), 2)
+        precision = round(
+            (
+                precision_score(y_test, y_pred, labels=unique_classes, average="micro")
+                * 100
+            ),
+            2,
+        )
+        recall = round(
+            (
+                recall_score(y_test, y_pred, labels=unique_classes, average="micro")
+                * 100
+            ),
+            2,
+        )
+        f1 = round((f1_score(y_test, y_pred, average="micro") * 100), 3)
+        cm = confusion_matrix(y_test, y_pred, labels=unique_classes)
 
         # Plot the confusion matrix
         plt.figure(figsize=(10, 7))
