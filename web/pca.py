@@ -1,3 +1,5 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 import streamlit as sl
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
@@ -9,25 +11,8 @@ class PCADecomposition:
         self.n_components = n_components
         self.pca = None
 
+    # Function that performs dimensionality reduction using the PCA algorithm
     def perform_pca(self):
-        self.pca = PCA(n_components=self.n_components)
-        self.pca.fit(self.data_frame)
-        return self.pca
-
-    def visualize_pca_scree(self):
-        self.perform_pca()
-        explained_variance = self.pca.explained_variance_ratio_
-
-        plt.figure(figsize=(8, 6))
-        plt.plot(
-            range(1, self.n_components + 1),
-            explained_variance * 100,
-            marker="o",
-            linestyle="-",
-        )
-        plt.xlabel("Principal Component")
-        plt.ylabel("Explained Variance (%)")
-        plt.title("Scree Plot")
-        plt.grid(True)
-        plt.legend()
-        sl.pyplot(plt)
+        pca = PCA(n_components=self.n_components)
+        pca.fit(self.data_frame)
+        sl.scatter_chart(pd.DataFrame(pca.transform(self.data_frame)))

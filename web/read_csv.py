@@ -29,7 +29,7 @@ def read_file(filename, file_extension):
 # TODO read all data_frame
 
 
-def upload_and_read_file():
+def upload_and_read_file(read_all_classes=False):
 
     uploaded_file = sl.file_uploader(
         "Import a csv or an excel file:", type=["csv", "xlsx"]
@@ -45,26 +45,30 @@ def upload_and_read_file():
             sl.error("File upload or read failed.")
             return None, None
 
-        columns = data.columns
-        target = sl.selectbox("Please specify your Target", columns)
+        if not read_all_classes:
+            columns = data.columns
+            target = sl.selectbox("Please specify your Target", columns)
 
-        if target is not None and target != "":
+            if target is not None and target != "":
 
-            # Get class names before encoding
-            class_mapping = data[target].unique()
+                # Get class names before encoding
+                class_mapping = data[target].unique()
 
-            # Fit the LabelEncoder and get the mapping
-            le = LabelEncoder()
-            le.fit(data[target])
-            class_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
-            # Sort class_mapping by values to get a list of class names
-            class_names = [
-                k for k, v in sorted(class_mapping.items(), key=lambda item: item[1])
-            ]
+                # Fit the LabelEncoder and get the mapping
+                le = LabelEncoder()
+                le.fit(data[target])
+                class_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
+                # Sort class_mapping by values to get a list of class names
+                class_names = [
+                    k
+                    for k, v in sorted(class_mapping.items(), key=lambda item: item[1])
+                ]
 
-            data["Target"] = le.transform(data[target])
+                data["Target"] = le.transform(data[target])
 
-            return data, class_names
+                return data, class_names
+        else:
+            return data, None
 
     # Return empty DataFrame and list if no file is uploaded or target is not specified
     return pd.DataFrame(), []

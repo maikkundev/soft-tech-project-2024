@@ -14,4 +14,4 @@ class tSNEDecomposition:
         features = self.data_frame.copy()
         self.tsne = TSNE(n_components=self.n_components)
         new_features = self.tsne.fit_transform(features)
-        sl.line_chart(pd.DataFrame(new_features))
+        sl.scatter_chart(pd.DataFrame(new_features))
