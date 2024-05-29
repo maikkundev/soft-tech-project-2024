@@ -18,9 +18,9 @@ def main():
     kc = KMeansClustering()
 
     # Upload the file
-    data_frame, class_names = upload_and_read_file()
+    data_frame, class_names = upload_and_read_file(read_all_classes=False)
 
-    if data_frame.empty:
+    if data_frame is not None and data_frame.empty:
         sl.warning(
             "Either the uploaded file is empty or could not be read, or Target is Empty. Please upload a valid file or input a Target."
         )
@@ -33,15 +33,8 @@ def main():
                 data_frame = lr.data_preprocess_for_the_supervised_algorithms(
                     data_frame, 0
                 )
-                sl.header("Settings:")
 
-                # Get k from user
-                k = sl.number_input(
-                    'Specify the number of neighbours "k" for the kNN classification:',
-                    min_value=1,
-                    step=1,
-                )
-
+                sl.title("Logistic Regression")
                 test_size = sl.number_input(
                     "Specify the test size (0.0,0.5] for the Logistic Regression classification (We recommend to not use a test size greater than 0.2): ",
                     min_value=0.01,
@@ -52,11 +45,18 @@ def main():
                 training_data, testing_data = lr.data_split(data_frame, test_size)
 
                 if test_size:
-                    sl.title("Logistic Regression")
                     lr.logistic_regression(training_data, testing_data, class_names)
                     sl.markdown("---")
+
+                sl.title("k-Nearest Neighbors")
+                # Get k from user
+                k = sl.number_input(
+                    'Specify the number of neighbours "k" for the kNN classification:',
+                    min_value=1,
+                    step=1,
+                )
+
                 if k:
-                    sl.title("k-Nearest Neighbors")
                     knn.kNN_algorithm(training_data, testing_data, class_names)
                     sl.markdown("---")
 
