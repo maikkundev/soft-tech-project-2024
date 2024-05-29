@@ -2,25 +2,31 @@
 import streamlit as sl
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
-import io
 
 
 @sl.cache_data()
 # Funtion to read the file based on its extension.
 def read_file(filename, file_extension):
     if file_extension == "csv":
-        for delim in [";", ","]:
+        try:
+            data = pd.read_csv(filename, sep=None, engine="python")
+            if len(data.columns) > 1:
+                return data
+        except (pd.errors.EmptyDataError, pd.errors.ParserError) as e:
             try:
-                data = pd.read_csv(filename, delimiter=delim)
+                data = pd.read_csv(filename, sep=";", engine="python")
                 if len(data.columns) > 1:
                     return data
-            except pd.errors.EmptyDataError:
-                continue
-        sl.error(
-            'The file you provided uses an invalid delimiter. Modify the delimiter either to ";" or to ",".'
-        )
+            except (pd.errors.EmptyDataError, pd.errors.ParserError) as e2:
+                sl.error(
+                    f"The file you provided is not a valid CSV file. Errors encountered: {e}, {e2}"
+                )
+
     else:
-        return pd.read_excel(filename)
+        return pd.read_excel(filename, engine="calamine")
+
+
+# TODO read all data_frame
 
 
 def upload_and_read_file():
@@ -32,10 +38,15 @@ def upload_and_read_file():
     if uploaded_file is not None:
         data = read_file(
             uploaded_file,
-            uploaded_file.type.split("/")[-1],
+            uploaded_file.type.split("/")[-1].lower(),
         )
 
-        target = sl.text_input("Please specify your Target")
+        if data is None:
+            sl.error("File upload or read failed.")
+            return None, None
+
+        columns = data.columns
+        target = sl.selectbox("Please specify your Target", columns)
 
         if target is not None and target != "":
 
