@@ -81,3 +81,5 @@ class HierachicalClustering:
             (silhouette_score(data, cluster_labels, metric=metric) * 100), 3
         )
         sl.write(f"Silhouette Score: {silhouette}")
+
+        return silhouette

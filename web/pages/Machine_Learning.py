@@ -14,7 +14,6 @@ def main():
     selected_option = sl.sidebar.radio("Machine Learning Algorithms", options)
 
     lr = LogisticRegressionClassification()
-    knn = KNNClassification(k=5)
     hc = HierachicalClustering()
     kc = KMeansClustering()
 
@@ -43,10 +42,11 @@ def main():
                     step=0.01,
                 )
 
-                training_data, testing_data = lr.data_split(data_frame, test_size)
-
                 if test_size:
-                    lr.logistic_regression(training_data, testing_data, class_names)
+                    training_data, testing_data = lr.data_split(data_frame, test_size)
+                    lr_a, lr_p, lr_r, lr_f1 = lr.logistic_regression(
+                        training_data, testing_data, class_names
+                    )
                     sl.markdown("---")
 
                 sl.title("k-Nearest Neighbors")
@@ -58,16 +58,68 @@ def main():
                 )
 
                 if k:
-                    knn.kNN_algorithm(training_data, testing_data, class_names)
+                    knn = KNNClassification(k=k)
+                    training_data, testing_data = knn.data_split(data_frame, k)
+                    knn_a, knn_p, knn_r, knn_f1 = knn.kNN_algorithm(
+                        training_data, testing_data, class_names
+                    )
                     sl.markdown("---")
+
+                if k and test_size:
+                    best_accuracy = max(knn_a, lr_a), (
+                        lambda knn_a, lr_a: (
+                            "(KNN)" if knn_a > lr_a else "(Logistic Regression)"
+                        )
+                    )(knn_a, lr_a)
+                    best_precision = max(knn_p, lr_p), (
+                        lambda knn_p, lr_p: (
+                            "(KNN)" if knn_p > lr_p else "(Logistic Regression)"
+                        )
+                    )(knn_p, lr_p)
+                    best_recall = max(knn_r, lr_r), (
+                        lambda knn_r, lr_r: (
+                            "(KNN)" if knn_r > lr_r else "(Logistic Regression)"
+                        )
+                    )(knn_r, lr_r)
+                    best_f1 = max(knn_f1, lr_f1), (
+                        lambda knn_f1, lr_f1: (
+                            "(KNN)" if knn_f1 > lr_f1 else "(Logistic Regression)"
+                        )
+                    )(knn_f1, lr_f1)
+
+                    sl.header("Best results")
+                    sl.write(
+                        "Accuracy: {0} {1}".format(best_accuracy[0], best_accuracy[1])
+                    )
+                    sl.write(
+                        "Precision: {0} {1}".format(
+                            best_precision[0], best_precision[1]
+                        )
+                    )
+                    sl.write("Recall: {0} {1}".format(best_recall[0], best_recall[1]))
+                    sl.write("F1 Score: {0} {1}".format(best_f1[0], best_f1[1]))
 
         elif selected_option == "Clustering Algorithms":
             if data_frame is not None:
                 sl.title("Hierachical Clustering")
-                hc.hierarchical_clustering(data_frame)
+                hc_s = hc.hierarchical_clustering(data_frame)
                 sl.markdown("---")
                 sl.title("k-Means Clustering")
-                kc.kmeans_algorithm(data_frame)
+                kc_s = kc.kmeans_algorithm(data_frame)
+
+                sl.header("Best Results")
+                best_silhouette = max(hc_s, kc_s), (
+                    lambda hc_s, kc_s: (
+                        "(Hierachical Clustering)"
+                        if hc_s > kc_s
+                        else "(k-Means Clustering)"
+                    )
+                )(hc_s, kc_s)
+                sl.write(
+                    "Silhouette Score: {0} {1}".format(
+                        best_silhouette[0], best_silhouette[1]
+                    )
+                )
 
 
 if __name__ == "__main__":

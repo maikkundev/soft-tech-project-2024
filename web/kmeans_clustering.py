@@ -55,7 +55,8 @@ class KMeansClustering:
     def kmeans_algorithm(self, data_frame):
         X = self.data_preprocess_for_the_clustering_algorithms(data_frame.iloc[:, :-1])
         n_clusters = sl.number_input(
-            'Specify the number of clusters "k" for the k-means clustering algorithm: '
+            'Specify the number of clusters "k" for the k-means clustering algorithm: ',
+            value=2,
         )
         n_clusters = int(n_clusters)
         if n_clusters <= len(X) and n_clusters > 1:
@@ -69,3 +70,5 @@ class KMeansClustering:
             sl.error(
                 "The number of clusters must be more than 1 and cannot exceed the number of instances. Please try again"
             )
+
+        return silhouette
