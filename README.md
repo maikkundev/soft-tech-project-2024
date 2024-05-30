@@ -3,5 +3,5 @@
 ## How to run the Streamlit web app
 
 ```bash
-streamlit run ./web/Hello.py
+docker compose up
 ```
