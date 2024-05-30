@@ -8,10 +8,11 @@ from kmeans_clustering import KMeansClustering
 
 
 def main():
-    # Define and create the radio buttons
+    sl.set_page_config(page_title="Machine Learning", page_icon="🤖")
+
     options = ["Classification Algorithms", "Clustering Algorithms"]
     selected_option = sl.sidebar.radio("Machine Learning Algorithms", options)
-    # Create instances of the classes
+
     lr = LogisticRegressionClassification()
     knn = KNNClassification(k=5)
     hc = HierachicalClustering()

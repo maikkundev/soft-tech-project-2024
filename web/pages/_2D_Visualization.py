@@ -8,6 +8,9 @@ import seaborn as sns
 
 
 def main():
+
+    sl.set_page_config(page_title="2D Visualization Tab", page_icon="📊")
+
     options = ["PCA & t-SNE Analysis", "EDA"]
     selected_option = sl.sidebar.radio("Choose an option", options)
 
