@@ -1,33 +1,42 @@
 # Software Technology Project 2024
 
-## How to run the Streamlit web app
+## Software Installation
 
-### Clone repository using `git`
+There are two ways to install and run the app:
+
+- Cloning the repository and running the Docker container.
+- Cloning the repository and running the app manually.
+
+### Cloning the Repository
+
+Make sure you have [Git](https://git-scm.com/downloads) installed on your machine.
 
 ```bash
 git clone https://github.com/maikkundev/soft-tech-project-2024.git
 ```
 
-## Run the web app via
-
 ### Docker
+
+Docker is the easiest way to run the app. Make sure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 
 ```bash
 docker compose up
 ```
 
-*Please make sure that port `8501` is not taken by another process.*
+*Please make sure that port `8501` is not being used by some other process.*
 
-### Using Streamlit
+### Manual Installation & Running
 
-1. Create a Python virtual enviroment (venv) and activate said enviroment:
+#### Virtual Environment
+
+Create a Python virtual enviroment (venv) and activate said enviroment:
 
 ```bash
 python -m venv ./.venv
 ```
 
 ```bash
-# Unix platforms:
+# Linux/Unix:
 $ source <PROJECT_PATH>/.venv/bin/activate
 ```
 
@@ -36,13 +45,17 @@ $ source <PROJECT_PATH>/.venv/bin/activate
 PS <PROJECT_PATH>\.venv\Scripts\Activate.ps1
 ```
 
-2. Install the necessary Python libraries that are included in the `requirements.txt` file using your preferred package manager:
+#### Installing the Required Libraries
+
+Install the necessary Python libraries that are included in the `requirements.txt` file using your preferred package manager:
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-3. Run app via the `streamlit` command:
+#### Running the App
+
+Run app via the `streamlit` command:
 
 ```bash
 streamlit run ./web/Info.py
