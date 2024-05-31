@@ -31,7 +31,7 @@
     $ source <PROJECT_PATH>/.venv/bin/activate
     ```
 
-    ```ps
+    ```bash
     # Windows: 
     PS <PROJECT_PATH>\.venv\Scripts\Activate.ps1
     ```
