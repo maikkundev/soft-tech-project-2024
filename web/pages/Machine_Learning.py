@@ -101,7 +101,7 @@ def main():
 
         elif selected_option == "Clustering Algorithms":
             if data_frame is not None:
-                sl.title("Hierachical Clustering")
+                sl.title("Hierarchical Clustering")
                 hc_s = hc.hierarchical_clustering(data_frame)
                 sl.markdown("---")
                 sl.title("k-Means Clustering")
