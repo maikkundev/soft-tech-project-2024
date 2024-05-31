@@ -41,6 +41,12 @@
 = Abstract
 _Abstracts must be able to stand alone and so cannot contain citations to the paper’s references, equations, etc. An abstract must consist of a single paragraph and be concise. Because of online formatting, abstracts must appear as plain as possible._
 
+= General Information
+- Language: Python 3.11
+- Libraries: pandas, numpy, sklearn, scipy, imblearn, matplotlib, streamlit, eaborn, pyreverse, tabulate
+- Git Repository: #link("https://github.com/maikkundev/soft-tech-project-2024")
+- Software Report: This document, using #link("https://github.com/typst/typst")[Typst]
+
 = Introduction
 This document introduces the software implementation and architecture, the dataset that was used, the analysis, the results, and the conclusion of the aforementioned analysis. It also explains what a software lifecycle is, and suggests the use of Agile as a methodology for software development. Furthermore, it explains in detail how the software will be released to the public, how each phase will need to be adjusted for such release. Finally, it lists the contributions of each team member. 
 
