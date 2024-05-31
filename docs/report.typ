@@ -45,6 +45,7 @@ This document introduces the software implementation and architecture, the datas
 - Libraries: pandas, numpy, sklearn, scipy, imblearn, matplotlib, streamlit, eaborn, pyreverse, tabulate
 - Git Repository: #link("https://github.com/maikkundev/soft-tech-project-2024")
 - Software Report: This document, using #link("https://github.com/typst/typst")[Typst]
+- Typst File Path: `soft-tech-projects-2024/docs/report.typ`
 
 = Implementation
  We used the Streamlit library to create the user interface, and the matplotlib and seaborn libraries to create the data visualization plots. The machine learning algorithms were implemented using the sklearn library, and the data was preprocessed using the pandas and numpy libraries. The software was containerized using Docker, and the UML diagrams were created using Pyreverse and Draw.io.
