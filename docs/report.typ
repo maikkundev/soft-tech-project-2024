@@ -103,10 +103,49 @@ The dataset we used is from the UC Invine Machine Learning Repository, and allow
 
 == Results
 
+=== Data Visualization
+Below are all three data visualization algorithms that we have implemented. They are PCA, t-SNE, and EDA respectively.
+
+==== PCA
+PCA or Principal Component Analysis is a statistical procedure that allows you to summarize the information content in large data tables by means of a smaller set of “summary indices” that can be more easily visualized and analyzed. #footnote[#link("https://www.sartorius.com/en/knowledge/science-snippets/what-is-principal-component-analysis-pca-and-how-it-is-used-507186")[What is Principal Component Analysis (PCA) and How it is Used? - Sartorius]]
+
+#figure(
+  image("../assets/pca.png"),
+  caption: [
+    PCA Graph with two classes, PC1 and PC2.
+  ]
+) <pcafig>
+
+As seen in @pcafig, each dot represents an instance of the data, and the colors represent the different features of the data. In this graph we can see the seperation of the data into two features. Those features can be any of the features available in the dataset.
+
+==== t-SNE
+t-SNE (t-distributed Stochastic Neighbor Embedding) is an unsupervised non-linear dimensionality reduction technique for data exploration and visualizing high-dimensional data. #footnote[#link("https://www.datacamp.com/tutorial/introduction-t-sne")[Introduction to t-SNE - Datacamp]]
+
+#figure(
+  image("../assets/tSNE.png"),
+  caption: [
+    t-SNE Graph with two features, C1 and C2.
+  ]
+) <tsnefig>
+
+As seen in @tsnefig, just like PCA, each dot represents an instance of the data, and the colors represent the different features of the data. In this graph we can see the seperation of the data into two features. Those features can be any of the features available in the dataset.
+
+==== EDA
+Exploratory Data Analysis (EDA) is an analysis approach that identifies general patterns in the data. These patterns include outliers and features of the data that might be unexpected. #footnote[#link("https://www.epa.gov/caddis/exploratory-data-analysis")[Exploratory Data Analysis | US EPA]]
+
+#figure(
+  image("../assets/eda.png", width: 80%),
+  caption: [
+    EDA Histogram
+  ]
+) <edafig>
+
+As seen in @edafig, the histogram shows the distribution of the data, and each bar represents a feature of the data. It visually represents the number of instances for each feature in the dataset
+
 == Conclusion
 
 = Software Lifecycle
-Software Lifecycle or Software Development Lifecycle (SDLC) is a process used by the software industry to design, develop and test high-quality software. The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, reaches completion within times and cost estimates.
+Software Lifecycle or Software Development Lifecycle (SDLC) is a process used by the software industry to design, develop and test high-quality software. The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, and reaches completion within times and cost estimates.
 
 == Agile Methodology
 Agile is a type of project management methodology, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers. It advocates adaptive planning, evolutionary development, early delivery, and continual improvement, and it encourages rapid and flexible response to change and includes six phases: Planning, Design, Development, Testing, Deployment, and Review.
