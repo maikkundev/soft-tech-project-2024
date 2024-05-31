@@ -17,4 +17,6 @@ class PCADecomposition:
     def perform_pca(self):
         pca = PCA(n_components=self.n_components)
         pca.fit(self.data_frame)
-        sl.scatter_chart(pd.DataFrame(pca.transform(self.data_frame)))
+        # pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+        result = pd.DataFrame(pca.transform(self.data_frame), columns=["PC1", "PC2"])
+        sl.scatter_chart(result)
