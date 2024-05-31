@@ -26,9 +26,6 @@ def read_file(filename, file_extension):
         return pd.read_excel(filename, engine="calamine")
 
 
-# TODO read all data_frame
-
-
 def upload_and_read_file(read_all_classes=False):
 
     uploaded_file = sl.file_uploader(
