@@ -8,6 +8,9 @@ import seaborn as sns
 
 
 def main():
+
+    sl.set_page_config(page_title="2D Visualization Tab", page_icon="📊")
+
     options = ["PCA & t-SNE Analysis", "EDA"]
     selected_option = sl.sidebar.radio("Choose an option", options)
 
@@ -32,12 +35,14 @@ def main():
             )
 
             # Display histogram for the target
+            sl.header("Histogram")
             fig, ax = plt.subplots()
             sns.histplot(data_frame[eda_target], kde=False, bins=30, ax=ax)
             sl.pyplot(fig)
 
             # Display box plot for the target if it's numeric
             if pd.api.types.is_numeric_dtype(data_frame[eda_target]):
+                sl.header("Box Plot")
                 fig, ax = plt.subplots()
                 sns.boxplot(x=data_frame[eda_target], ax=ax)
                 sl.pyplot(fig)

@@ -150,3 +150,5 @@ class LogisticRegressionClassification:
         sl.write(f"Precision: {precision}")
         sl.write(f"Recall: {recall}")
         sl.write(f"F1 Score: {f1}")
+
+        return accuracy, precision, recall, f1

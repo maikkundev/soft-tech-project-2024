@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-from tabulate import tabulate
 from sklearn.decomposition import PCA
 from scipy.spatial.distance import pdist
 from scipy.cluster import hierarchy
@@ -81,3 +79,5 @@ class HierachicalClustering:
             (silhouette_score(data, cluster_labels, metric=metric) * 100), 3
         )
         sl.write(f"Silhouette Score: {silhouette}")
+
+        return silhouette
