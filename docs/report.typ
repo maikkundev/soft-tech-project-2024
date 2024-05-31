@@ -38,16 +38,14 @@
 #show link: underline
 
 = Abstract
-_Abstracts must be able to stand alone and so cannot contain citations to the paper’s references, equations, etc. An abstract must consist of a single paragraph and be concise. Because of online formatting, abstracts must appear as plain as possible._
+This document introduces the software implementation and architecture, the dataset that was used, the analysis, the results, and the conclusion of the aforementioned analysis. It also explains what a software lifecycle is, and suggests the use of Agile as a methodology for software development. Furthermore, it explains in detail how the software will be released to the public, how each phase will need to be adjusted for such release. Finally, it lists the contributions of each team member.
+
 
 = General Information
 - Language: Python 3.11
 - Libraries: pandas, numpy, sklearn, scipy, imblearn, matplotlib, streamlit, eaborn, pyreverse, tabulate
 - Git Repository: #link("https://github.com/maikkundev/soft-tech-project-2024")
 - Software Report: This document, using #link("https://github.com/typst/typst")[Typst]
-
-= Introduction
-This document introduces the software implementation and architecture, the dataset that was used, the analysis, the results, and the conclusion of the aforementioned analysis. It also explains what a software lifecycle is, and suggests the use of Agile as a methodology for software development. Furthermore, it explains in detail how the software will be released to the public, how each phase will need to be adjusted for such release. Finally, it lists the contributions of each team member. 
 
 = Implementation
  We used the Streamlit library to create the user interface, and the matplotlib and seaborn libraries to create the data visualization plots. The machine learning algorithms were implemented using the sklearn library, and the data was preprocessed using the pandas and numpy libraries. The software was containerized using Docker, and the UML diagrams were created using Pyreverse and Draw.io.
@@ -246,6 +244,6 @@ In the Deployment phase, the team should release the software to the public, all
 Finally, during Review, the team will gather feedback from the users, and use it to improve the software, by adding new features, patching bugs, and improving the user experience.
 
 = Contributions
-- Γαβριήλ Κοσκινάς implemented data fetching, machine learning processing and analysis, as well as wrote the algorithmic Analysis and Conclusion remarks.
+- Γαβριήλ Κοσκινάς implemented data fetching, data preprocessing, data analysis using \ Machine Learning, as well as wrote the algorithmic Analysis and Conclusion remarks.
 - Μιχαήλ Αβαγιανός created the user interface, the data visualization, the UML and \ modularized the code.
-- Θανάσης Ράτσικας containerized the application, and wrote this document.
+- Θανάσης Ράτσικας containerized the application, and wrote the majority this document.
