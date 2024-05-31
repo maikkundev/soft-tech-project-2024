@@ -55,7 +55,7 @@ class KMeansClustering:
     def kmeans_algorithm(self, data_frame):
         X = self.data_preprocess_for_the_clustering_algorithms(data_frame.iloc[:, :-1])
         n_clusters = sl.number_input(
-            'Specify the number of clusters "k" for the k-means clustering algorithm: ',
+            "Specify the number of clusters 'k' for the k-means clustering algorithm:",
             value=2,
         )
         n_clusters = int(n_clusters)
