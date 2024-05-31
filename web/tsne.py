@@ -16,5 +16,5 @@ class tSNEDecomposition:
     def perform_tSNE(self):
         features = self.data_frame.copy()
         self.tsne = TSNE(n_components=self.n_components)
-        result = pd.DataFrame(self.tsne.fit_transform(features), columns=["PC1", "PC2"])
+        result = pd.DataFrame(self.tsne.fit_transform(features), columns=["C1", "C2"])
         sl.scatter_chart(result)
