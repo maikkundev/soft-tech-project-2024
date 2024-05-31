@@ -1,11 +1,7 @@
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
-from scipy.spatial.distance import pdist
-from scipy.cluster.hierarchy import fcluster
-from sklearn.metrics import silhouette_score, calinski_harabasz_score
+from sklearn.metrics import silhouette_score
 import streamlit as sl
 
 

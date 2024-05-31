@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import streamlit as sl
 from sklearn.decomposition import PCA
-from matplotlib import pyplot as plt
 
 
 class PCADecomposition:
