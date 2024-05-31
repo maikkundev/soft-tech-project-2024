@@ -38,14 +38,14 @@
 #show link: underline
 
 = Abstract
-This document introduces the software implementation and architecture, the dataset that was used, the analysis, the results, and the conclusion of the aforementioned analysis. It also explains what a software lifecycle is, and suggests the use of Agile as a methodology for software development. Furthermore, it explains in detail how the software will be released to the public, how each phase will need to be adjusted for such release. Finally, it lists the contributions of each team member.
+This document introduces the software implementation and architecture, the dataset that was used, the analysis, the results, and the conclusion of the aforementioned analysis. Furthermore, it explains how the data analysis was done, gives the results as well as figures for the algorithms' graphs, and concludes the analysis by referring to the input and output of each type of algorithm and the results of each algorithm. It also mentions what a software lifecycle is, and suggests the use of Agile as a methodology for software development. Moreover, it details how the software will be released to the public, how each phase will need to be adjusted for such release. Finally, it lists the contributions of each team member.
 
 = General Information
 - Language: Python 3.11
 - Libraries: pandas, numpy, sklearn, scipy, imblearn, matplotlib, streamlit, eaborn, pyreverse, tabulate
 - Git Repository: #link("https://github.com/maikkundev/soft-tech-project-2024")
 - Software Report: This document, using #link("https://github.com/typst/typst")[Typst]
-- Typst File Path: `soft-tech-projects-2024/docs/report.typ`
+- Typst File Path: `<PROJECT_ROOT>/docs/report.typ`
 
 = Implementation
  We used the Streamlit library to create the user interface, and the matplotlib and seaborn libraries to create the data visualization plots. The machine learning algorithms were implemented using the sklearn library, and the data was preprocessed using the pandas and numpy libraries. The software was containerized using Docker, and the UML diagrams were created using Pyreverse and Draw.io.
