@@ -52,7 +52,7 @@ def main():
                 sl.title("k-Nearest Neighbors")
                 # Get k from user
                 k = sl.number_input(
-                    'Specify the number of neighbours "k" for the kNN classification:',
+                    "Specify the number of neighbours 'k' for the kNN classification:",
                     min_value=1,
                     step=1,
                 )
