@@ -1,3 +1,4 @@
+from sklearn.calibration import LabelEncoder
 import streamlit as sl
 import pandas as pd
 from sklearn.manifold import TSNE
@@ -5,7 +6,9 @@ from sklearn.manifold import TSNE
 
 class tSNEDecomposition:
     def __init__(self, data_frame, n_components):
-        self.data_frame = data_frame
+        self.data_frame = data_frame.apply(
+            LabelEncoder().fit_transform
+        )  # Apply label encoding
         self.n_components = n_components
         self.tsne = None
 

@@ -7,7 +7,9 @@ from matplotlib import pyplot as plt
 
 class PCADecomposition:
     def __init__(self, data_frame, n_components):
-        self.data_frame = data_frame
+        self.data_frame = data_frame.apply(
+            LabelEncoder().fit_transform
+        )  # Apply label encoding
         self.n_components = n_components
         self.pca = None
 
