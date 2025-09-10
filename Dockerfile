@@ -17,3 +17,4 @@ COPY /web/ /app/web/
 HEALTHCHECK CMD curl --fail http://localhost:8502/_stcore/health
 
 ENTRYPOINT [ "streamlit", "run", "./web/Info.py", "--server.address=0.0.0.0", "--server.port 8502" ]
+EXPOSE 8502
