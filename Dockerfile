@@ -14,6 +14,6 @@ RUN pip3 install -r requirements.txt
 # Copy the web app
 COPY /web/ /app/web/
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+HEALTHCHECK CMD curl --fail http://localhost:8502/_stcore/health
 
-ENTRYPOINT [ "streamlit", "run", "./web/Info.py", "--server.address=0.0.0.0" ]
+ENTRYPOINT [ "streamlit", "run", "./web/Info.py", "--server.address=0.0.0.0", "--server.port 8502" ]
