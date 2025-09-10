@@ -3,13 +3,6 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app/
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    software-properties-common \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
 # Enable venv
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
